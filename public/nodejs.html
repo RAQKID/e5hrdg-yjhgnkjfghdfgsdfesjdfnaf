@@ -57,28 +57,32 @@
     <pre><code>
 const axios = require("axios");
 
-const BASE_URL = "https://raqkidapiendpoint505.onrender.com/";
+const BASE_URL = "https://raqkidapiendpoint505.onrender.com";
+const model = "model";   // Model name (Check the model valid names in the official server.)
 
 async function sendPrompt(userPrompt) {
   const params = {
-    model: "models",       // Model name (Check the model valid names in the official server.)
-    key: "Your_KEY",     // Replace with your Raqkid API Key
+    model: model,
+    key: "Your_KEY",      // Replace with your Raqkid API Key
     prompt: userPrompt
   };
 
   try {
-    const response = await axios.get(BASE_URL, { params });
+    const response = await axios.get(`${BASE_URL}/${model}`, { params });
     console.log("API Response:", response.data);
   } catch (error) {
     console.error("Error:", error.message);
   }
 }
 
-sendPrompt("This is my test prompt with spaces!");   // Your Prompts
+// usage
+sendPrompt("Which model are you?");    // Your Prompts
+
     </code></pre>
 
     <a href="index.html" class="back-link">⬅ Back to Home</a>
   </main>
 </body>
 </html>
+
 

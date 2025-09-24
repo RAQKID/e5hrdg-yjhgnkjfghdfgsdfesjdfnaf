@@ -57,27 +57,30 @@
     <pre><code>
 import requests
 
-BASE_URL = "https://raqkidapiendpoint505.onrender.com/"
+BASE_URL = "https://raqkidapiendpoint505.onrender.com"
+model = "model"   # Model name (Check the model valid names in the official server.)
 
 def send_prompt(user_prompt):
     params = {
-        "model": "models",     # Model name (Check the model valid names in the official server.)
-        "key": "Your_KEY",   # Replace with your Raqkid API Key
+        "model": model,
+        "key": "Your_KEY",  # Replace with your Raqkid API Key
         "prompt": user_prompt
     }
 
     try:
-        response = requests.get(BASE_URL, params=params)
+        response = requests.get(f"{BASE_URL}/{model}", params=params)
         response.raise_for_status()
         print("API Response:", response.json())
     except requests.exceptions.RequestException as e:
         print("Error:", e)
 
-send_prompt("This is my test prompt with spaces!")  # Your Prompts
+# usage
+send_prompt("Which model are you?")   # Your Prompts
     </code></pre>
 
     <a href="index.html" class="back-link">⬅ Back to Home</a>
   </main>
 </body>
 </html>
+
 
